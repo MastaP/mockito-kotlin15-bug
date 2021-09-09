@@ -31,8 +31,8 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         jvmTarget = JavaVersion.VERSION_11.toString()
         javaParameters = true
         useFir = false // no difference with 'true'
-        apiVersion = "1.4"
-        languageVersion = "1.4"
+        apiVersion = "1.5"
+        languageVersion = "1.5"
     }
 }
 
