@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     kotlin("jvm") version "1.5.30"
 }
@@ -25,7 +27,7 @@ java {
     targetCompatibility = JavaVersion.VERSION_11
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
         jvmTarget = JavaVersion.VERSION_11.toString()
@@ -38,4 +40,10 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+val compileTestKotlin by tasks.getting(KotlinCompile::class) {
+    kotlinOptions {
+        freeCompilerArgs = listOf("-Xjsr305=strict", "-Xsam-conversions=class")
+    }
 }
